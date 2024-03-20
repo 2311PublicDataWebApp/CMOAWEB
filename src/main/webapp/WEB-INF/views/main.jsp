@@ -5,7 +5,8 @@
 	<head>
 		<meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CMoA::한국중앙박물관</title>
+        <title>한국중앙박물관</title>
+        <%@ include file="./inc/mainHead.jsp" %>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
@@ -13,18 +14,11 @@
         <link href="../resources/css/plugins.min.css" rel="stylesheet">
     </head>
     <body>
-        <div class="page-loader">
-            <div class="page-loader-inner">
-                <div class="spinner">
-                    <div class="spinner-grow text-teal"></div>
-                </div>
-            </div>
-        </div>
         <jsp:include page="./inc/header.jsp"></jsp:include>
         <div class="wrapper">
             <section class="module-cover-slides fullscreen">
                 <ul class="slides-container">
-                    <li class="parallax text-center" data-overlay="0.1"><img src="./images/mainexhibit1.png" alt="main1">
+                    <li class="parallax text-center" data-overlay="0.1"><img src="../resources/img/mainexhibit1.png" alt="main1">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
@@ -37,7 +31,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="parallax" data-overlay="0.6"><img src="./images/mainexhibit2.jpg" alt="main2">
+                    <li class="parallax" data-overlay="0.6"><img src="../resources/img/mainexhibit2.jpg" alt="main2">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
@@ -51,7 +45,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="parallax text-center" data-overlay="0.5"><img src="./images/mainexhibit3.jpeg" alt="main3">
+                    <li class="parallax text-center" data-overlay="0.5"><img src="../resources/img/mainexhibit3.jpeg" alt="main3">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12 text-center">
@@ -104,7 +98,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <p><img src="./images/img_intro_bg03.jpg" alt=""></p>
+                            <p><img src="../resources/img/img_intro_bg03.jpg" alt=""></p>
                         </div>
                     </div>
                     <div class="row">
@@ -116,10 +110,5 @@
             </section>
 			<jsp:include page="./inc/footer.jsp"></jsp:include>
         </div>
-        <!-- scripts -->
-        <script src="../resources/js/jquery.min.js"></script>
-        <script src="../resources/js/bootstrap.min.js"></script>
-        <script src="../resources/js/plugins.min.js"></script>
-        <script src="../resources/js/bootstrap.bundle.js"></script>
     </body>
 </html>

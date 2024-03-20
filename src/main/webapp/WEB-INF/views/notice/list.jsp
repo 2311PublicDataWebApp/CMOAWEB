@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%> 
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,13 +15,6 @@
         <link href="../resources/css/plugins.min.css" rel="stylesheet">
     </head>
     <body>
-        <div class="page-loader">
-            <div class="page-loader-inner">
-                <div class="spinner">
-                    <div class="spinner-grow text-teal"></div>
-                </div>
-            </div>
-        </div>
         <jsp:include page="../inc/header.jsp"></jsp:include>
         <div class="wrapper">
             <section class="module-page-title bg-gray">
@@ -32,9 +27,9 @@
                         </div>
                         <div class="col-md-6">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="./main.html">한국중앙박물관</a></li>
-                                <li class="breadcrumb-item"><a href="./announce.html">공지사항</a></li>
-                                <li class="breadcrumb-item active">알림마당</li>
+                                <li class="breadcrumb-item"><a href="/">한국중앙박물관</a></li>
+                                <li class="breadcrumb-item"><a href="/notice/list.do">공지사항</a></li>
+                                <li class="breadcrumb-item active"><a href="/notice/list.do">알림마당</a></li>
                             </ol>
                         </div>
                     </div>
@@ -53,11 +48,15 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane show active" id="tab-1-1">
-                                    <p><strong>2023-12-02</strong></p><p><a href="#">박물관 엘리베이터 일시 운행 중단 알림</a></p>
-                                    <hr>
-                                    <p><strong>2023-12-01</strong></p><p><a href="#">기증관 일부 전시실(205~208호) 휴실 기간 연장 안내(~'24.1.11)</a></p>
-                                    <hr>
-                                    <p><strong>2023-11-20</strong></p><p><a href="#">11.29.(수)~12.5.(화) 외부식당 <야미당> 주방 전열 보수작업으로 인한 휴업 안내</a></p>
+                       				<c:forEach items="${nList }" var="notice" varStatus="i">
+                       					<p>
+                       						<strong>${notice.noticeDate }</strong>
+                       					</p>
+                       					<p>
+                       						<a href="/notice/detail?noticeNo=${notice.noticeNo }">${notice.noticeTitle }</a>
+										</p>
+                                		<hr>
+									</c:forEach>
                                 </div>
                             </div>
                         </div>
@@ -66,10 +65,25 @@
                         <div class="col-md-12">
                             <nav>
                                 <ul class="pagination justify-content-center">
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                	<c:if test="${pi.startNavi ne '1' }">
+                                		<li class="page-item">
+											<a class="page-link" href="/notice/list.do?page=${pi.startNavi - 1 }"><<</a>
+										</li>
+                                	</c:if>
+                                	<c:forEach begin="${pi.startNavi }" end="${pi.endNavi }" var="p">
+										<li class="page-item">
+											<a class="page-link" href="/notice/list.do?page=${p }">${p }</a>
+										</li>
+									</c:forEach>
+									<c:if test="${pi.endNavi ne pi.naviTotalCount }">
+                                		<li class="page-item">
+											<a class="page-link" href="/notice/list.do?page=${pi.endNavi + 1 }">>></a>
+										</li>
+                                	</c:if>
+<!--                                     <li class="page-item active"><a class="page-link" href="#">1</a></li>
                                     <li class="page-item"><a class="page-link" href="#">2</a></li>
                                     <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">4</a></li> -->
                                 </ul>
                             </nav>
                         </div>

@@ -25,4 +25,67 @@ public class MemberServiceLogic implements MemberService{
 		return mOne;
 	}
 
+	/**
+	 * 멤버 회원가입 Service
+	 */
+	@Override
+	public int registerMember(MemberVO member) {
+		int result = mStore.registerMember(session, member);
+		return result;
+	}
+
+	/**
+	 * 멤버 아이디 찾기 Service
+	 */
+	@Override
+	public MemberVO findOneId(MemberVO member) {
+		MemberVO mOne = mStore.findOneId(session, member);
+		return mOne;
+	}
+
+	/**
+	 * 멤버 비밀번호 찾기 Service
+	 */
+	@Override
+	public MemberVO findOneForPw(MemberVO member) {
+		MemberVO mOne = mStore.findOneForPw(session, member);
+		return mOne;
+	}
+
+	/**
+	 * 멤버 비밀번호 재설정 Service
+	 */
+	@Override
+	public int updateMemberPW(MemberVO member) {
+		int result = mStore.updateMemberPW(session, member);
+		return result;
+	}
+
+	/**
+	 * 멤버 정보 조회 by userId
+	 */
+	@Override
+	public MemberVO findOneById(String userId) {
+		MemberVO mOne = mStore.findOneById(session, userId);
+		return mOne;
+	}
+
+	/**
+	 * 멤버 수정 Service
+	 */
+	@Override
+	public int updateMember(MemberVO member) {
+		int result = mStore.updateMember(session, member);
+		return result;
+	}
+
+	/**
+	 * 멤버 탈퇴 Service
+	 */
+	@Override
+	public int deleteMember(String userId) {
+		int result = mStore.deleteMember(session, userId);
+		return result;
+	}
+
 }
