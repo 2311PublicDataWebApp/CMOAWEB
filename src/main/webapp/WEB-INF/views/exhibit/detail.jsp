@@ -5,7 +5,7 @@
 	<head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>전시 상세</title>
+        <title>한국중앙박물관</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
@@ -13,16 +13,9 @@
         <link href="../resources/css/plugins.min.css" rel="stylesheet">
     </head>
     <body>
-        <div class="page-loader">
-            <div class="page-loader-inner">
-                <div class="spinner">
-                    <div class="spinner-grow text-teal"></div>
-                </div>
-            </div>
-        </div>
         <jsp:include page="../inc/header.jsp"></jsp:include>
         <div class="wrapper">
-            <section class="module-cover parallax text-center" data-background="./images/singlemain1.jpeg" data-overlay="0.2">
+            <section class="module-cover parallax text-center" data-background="../resources/images/singlemain1.jpeg" data-overlay="0.2">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -35,7 +28,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8">
-                            <img class="" src="./images/singlephoto1.jpeg" alt="">
+                            <img class="" src="../resources/images/singlephoto1.jpeg" alt="">
                         </div>
                         <div class="col-md-4">
                             <div class="sticky-sidebar">
@@ -58,7 +51,7 @@
                                 <hr class="m-t-30 m-b-30">
                                 <div class="form-group">
                                     <button class="btn btn-block btn-round btn-brand" type="button">
-                                        <a href="./reservation.html" style="color: #fff;">예약하기</a>
+                                        <a href="/exhibit/reservation.do" style="color: #fff;">예약하기</a>
                                     </button>
                                 </div>
                             </div>

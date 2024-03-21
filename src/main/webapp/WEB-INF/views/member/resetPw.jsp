@@ -20,10 +20,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4 col-md-6 m-auto">
-                            <div class="m-b-20">
+                            <div>
                                 <h6>비밀번호 재설정</h6>
                             </div>
-                            <div class="m-b-20">
+                            <div>
                                 <form action="/member/resetPw.do" method="post">
                                     <div class="form-group">
                                         <input class="form-control" type="text" name="userId" value="${userId }" readonly>

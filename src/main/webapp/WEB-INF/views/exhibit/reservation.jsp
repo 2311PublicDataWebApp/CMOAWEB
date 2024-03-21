@@ -5,7 +5,7 @@
 	<head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>전시 예매</title>
+        <title>한국중앙박물관</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
@@ -13,13 +13,6 @@
         <link href="../resources/css/plugins.min.css" rel="stylesheet">
     </head>
     <body>
-        <div class="page-loader">
-            <div class="page-loader-inner">
-                <div class="spinner">
-                    <div class="spinner-grow text-teal"></div>
-                </div>
-            </div>
-        </div>
         <jsp:include page="../inc/header.jsp"></jsp:include>
         <div class="wrapper">
             <section class="module-page-title bg-gray">
@@ -32,8 +25,8 @@
                         </div>
                         <div class="col-md-6">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="./main.html">한국중앙박물관</a></li>
-                                <li class="breadcrumb-item"><a href="#">특별전시</a></li>
+                                <li class="breadcrumb-item"><a href="/">한국중앙박물관</a></li>
+                                <li class="breadcrumb-item"><a href="/exhibit/list.do">현재 전시</a></li>
                                 <li class="breadcrumb-item active">전시 예매</li>
                             </ol>
                         </div>
@@ -45,18 +38,15 @@
                     <div class="row">
                         <div class="col-md-8 m-auto">
                             <div class="heading-underline">
-                                <h5 class="m-b-30">전시 예매</h5>
+                                <h5 class="">전시 예매</h5>
                             </div>
                             <form>
                                 <div class="row form-row">
                                     <p class="col-md-12">예약자 성함을 입력해주세요</p><br>
                                 </div>
                                 <div class="row form-row">
-                                    <div class="col-md-6 form-group">
-                                        <input class="form-control" type="text" placeholder="성" required>
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <input class="form-control" type="text" placeholder="이름" required>
+                                    <div class="col-md-12 form-group">
+                                        <input class="form-control" type="text" placeholder="이름을 입력해주세요" required>
                                     </div>
                                 </div>
                                 <div class="row form-row">
@@ -95,12 +85,14 @@
                                         <input class="form-control" type="date" required>
                                     </div>
                                 </div>
-                            </div>
-                    </div>
-                    <div class="row m-t-70">
-                        <div class="col-md-8 m-auto">
-                            <div class="text-right"><button class="btn btn-block btn-round btn-brand" type="submit">예약하기</button></div>
-                        </div>
+                                <br>
+			                    <div class="row form-row">
+			                        <div class="col-md-12 form-group">
+			                            <div class="text-right"><button class="btn btn-block btn-round btn-brand" type="submit">예약하기</button></div>
+			                        </div>
+			                    </div>
+			           		</form>
+                 		</div>
                     </div>
                 </div>
             </section>

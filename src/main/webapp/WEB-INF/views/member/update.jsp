@@ -38,13 +38,15 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
-                            <div class="sticky-sidebar">
-							</div>
+                            <ul class="nav-sidebar sticky-sidebar">
+                            	<hr>
+                                <li><a href="/member/mypage.do">나의 정보</a></li>
+                            	<hr>
+                            	<li><a href="/member/myreservation.do">예매 내역</a></li>
+                            	<hr>
+							</ul>
                         </div>
                         <div class="col-md-9 m-auto">
-                            <!-- <div class="heading-underline">
-                                <h5 class="">전시 예매</h5>
-                            </div> -->
                             <form action="/member/update.do" method="post">
                                 <div class="row form-row">
                                     <p class="col-md-12">아이디</p><br>

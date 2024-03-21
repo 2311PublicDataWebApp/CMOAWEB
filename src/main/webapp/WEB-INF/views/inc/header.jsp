@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<div class="page-loader">
+    <div class="page-loader-inner">
+        <div class="spinner">
+            <div class="spinner-grow text-teal"></div>
+        </div>
+    </div>
+</div>
 <header class="header header-transparent">
     <div class="container-fluid">
         <div class="inner-header"><a class="inner-brand" href="/">CMoA</a></div>
@@ -15,7 +22,7 @@
                     <li class="menu-category-items"><a href="#"><span class="menu-category-span">현재 전시</span></a>
                         <ul class="sub-menu">
                             <li><a href="/exhibit/reservation.do">전시 예매</a></li>
-                            <li><a href="/exhibit/list.do">현재 전시</a></li>
+                            <li><a href="/exhibit/list.do">전시 목록</a></li>
                         </ul>
                     </li>
                     <li class="menu-category-items"><a href="#"><span class="menu-category-span">공지사항</span></a>
@@ -37,8 +44,8 @@
                         <c:if test="${userId ne 'admin' }">
 		                    <li class="menu-category-items"><a href="#"><span class="menu-category-span">마이페이지</span></a>
 		                        <ul class="sub-menu">
-		                            <li><a href="/member/mypage.do">마이페이지</a></li>
-		                            <li><a href="/member/register.do">예매 내역</a></li>
+		                            <li><a href="/member/mypage.do">나의정보</a></li>
+		                            <li><a href="/member/myreservation.do">예매내역</a></li>
 		                            <li><a href="/member/logout.do">로그아웃</a></li>
 		                        </ul>
 		                    </li>
