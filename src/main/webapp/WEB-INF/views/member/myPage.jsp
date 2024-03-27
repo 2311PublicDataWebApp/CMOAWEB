@@ -7,11 +7,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>한국중앙박물관</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-        <link href="../resources/css/bootstrap.css" rel="stylesheet">
-        <link href="../resources/css/plugins.min.css" rel="stylesheet">
+        <%@ include file="../inc/head.jsp" %>
     </head>
     <body>
         <jsp:include page="../inc/header.jsp"></jsp:include>
@@ -40,9 +36,9 @@
                         <div class="col-md-3">
                             <ul class="nav-sidebar sticky-sidebar">
                             	<hr>
-                                <li><a href="/member/mypage.do">나의 정보</a></li>
+                                <li><a href="/member/myPage.do">나의 정보</a></li>
                             	<hr>
-                            	<li><a href="/member/myreservation.do">예매 내역</a></li>
+                            	<li><a href="/member/myBooking.do">예매 내역</a></li>
                             	<hr>
 							</ul>
                         </div>
@@ -102,10 +98,5 @@
             </section>
 			<jsp:include page="../inc/footer.jsp"></jsp:include>
         </div>
-        <!-- scripts -->
-        <script src="../resources/js/jquery.min.js"></script>
-        <script src="../resources/js/bootstrap.min.js"></script>
-        <script src="../resources/js/plugins.min.js"></script>
-        <script src="../resources/js/bootstrap.bundle.js"></script>
     </body>
 </html>

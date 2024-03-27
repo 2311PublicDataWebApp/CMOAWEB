@@ -1,16 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>한국중앙박물관</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-        <link href="../resources/css/bootstrap.css" rel="stylesheet">
-        <link href="../resources/css/plugins.min.css" rel="stylesheet">
+        <%@ include file="../inc/head.jsp" %>
     </head>
     <body>
         <jsp:include page="../inc/header.jsp"></jsp:include>
@@ -40,13 +37,14 @@
                             <div class="heading-underline">
                                 <h5 class="">전시 예매</h5>
                             </div>
-                            <form>
+                            <form action="/booking/apply.do" method="POST">
+                            	<input class="form-control" type="hidden" name="userId" value="${member.userId }" required>
                                 <div class="row form-row">
                                     <p class="col-md-12">예약자 성함을 입력해주세요</p><br>
                                 </div>
                                 <div class="row form-row">
                                     <div class="col-md-12 form-group">
-                                        <input class="form-control" type="text" placeholder="이름을 입력해주세요" required>
+                                        <input class="form-control" type="text" name="bookingName" value="${member.userName }" required>
                                     </div>
                                 </div>
                                 <div class="row form-row">
@@ -54,12 +52,11 @@
                                 </div>
                                 <div class="row form-row">
                                     <div class="col-md-12 form-group">
-                                        <select class="form-control">
-                                            <option selected="selected">어느 수집가의 초대 – 고故 이건희 회장 기증 1주년 기념</option>
-                                            <option>합스부르크 600년, 매혹의 걸작들 - 빈미술사박물관 특별전</option>
-                                            <option>진행 중인 전시명</option>
-                                            <option>진행 중인 전시명</option>
-                                            <option>진행 중인 전시명</option>
+                                        <select class="form-control" name="exhibitNo">
+                                        	<option selected="selected">전시명</option>
+                                        	<c:forEach items="${eList }" var="exhibit" varStatus="i">
+                                        		<option value="${exhibit.exhibitNo }">${exhibit.exhibitTitle } :: ${exhibit.startDate } ~ ${exhibit.endDate }</option>
+                                        	</c:forEach>
                                         </select>
                                     </div>
                                 </div>
@@ -68,12 +65,12 @@
                                 </div>
                                 <div class="row form-row">
                                     <div class="col-md-12 form-group">
-                                        <select class="form-control">
-                                            <option selected="selected">1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                        <select class="form-control" name="peopleNo">
+                                            <option value=1 selected="selected">1</option>
+                                            <option value=2>2</option>
+                                            <option value=3>3</option>
+                                            <option value=4>4</option>
+                                            <option value=5>5</option>
                                         </select>
                                     </div>
                                 </div>
@@ -82,7 +79,23 @@
                                 </div>
                                 <div class="row form-row">
                                     <div class="col-md-12 form-group">
-                                        <input class="form-control" type="date" required>
+                                        <input class="form-control" type="date" name="bookingDate" min="${exhibit.startDate }" max="${exhibit.endDate }" required>
+                                    </div>
+                                </div>
+                                <div class="row form-row">
+                                    <p class="col-md-12">예약자 휴대폰 번호를 입력해주세요</p><br>
+                                </div>
+                                <div class="row form-row">
+                                    <div class="col-md-12 form-group">
+                                        <input class="form-control" type="text" name="bookingPhone" value="${member.userPhone }" required>
+                                    </div>
+                                </div>
+                                <div class="row form-row">
+                                    <p class="col-md-12">예약자 이메일을 입력해주세요</p><br>
+                                </div>
+                                <div class="row form-row">
+                                    <div class="col-md-12 form-group">
+                                        <input class="form-control" type="email" name="bookingEmail" value="${member.userEmail }" required>
                                     </div>
                                 </div>
                                 <br>
@@ -98,10 +111,5 @@
             </section>
 			<jsp:include page="../inc/footer.jsp"></jsp:include>
         </div>
-        <!-- scripts -->
-        <script src="../resources/js/jquery.min.js"></script>
-        <script src="../resources/js/bootstrap.min.js"></script>
-        <script src="../resources/js/plugins.min.js"></script>
-        <script src="../resources/js/bootstrap.bundle.js"></script>
     </body>
 </html>

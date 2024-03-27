@@ -6,15 +6,10 @@
 		<meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>한국중앙박물관</title>
-        <%@ include file="./inc/mainHead.jsp" %>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-        <link href="../resources/css/bootstrap.css" rel="stylesheet">
-        <link href="../resources/css/plugins.min.css" rel="stylesheet">
+        <%@ include file="./inc/head.jsp" %>
     </head>
     <body>
-        <jsp:include page="./inc/header.jsp"></jsp:include>
+        <jsp:include page="./inc/transparentHeader.jsp"></jsp:include>
         <div class="wrapper">
             <section class="module-cover-slides fullscreen">
                 <ul class="slides-container">
@@ -25,8 +20,8 @@
                                     <h1 class="m-b-20"><strong>인왕제색도 (仁王霽色圖)</strong></h1>
                                     <p class="m-b-40">어느 수집가의 초대 - 고故 이건희 회장 기증 1주년 기념전</p>
                                     <p>
-                                        <a class="btn btn-lg btn-circle btn-new-white" href="./detail.html">전시 정보</a>
-                                        <a class="btn btn-lg btn-circle btn-outline-new-white" href="./reservation.html">예약하기</a></p>
+                                        <a class="btn btn-lg btn-circle btn-new-white" href="/exhibit/detail.do?exhibitNo=1">전시 정보</a>
+                                        <a class="btn btn-lg btn-circle btn-outline-new-white" href="/booking/apply.do">예약하기</a></p>
                                 </div>
                             </div>
                         </div>
@@ -38,8 +33,8 @@
                                     <h1 class="m-b-20"><strong>사유의 방<br>(A Room of Quiet Contemplation)</strong></h1>
                                     <p class="m-b-40">새로운 전시 공간에서 국보 반가사유상과 함께하는 사유의 여정이 시작됩니다</p>
                                     <p>
-                                        <a class="btn btn-lg btn-circle btn-light" href="#">전시 정보</a>
-                                        <a class="btn btn-lg btn-circle btn-outline-new-white" href="#">예약하기</a>
+                                        <a class="btn btn-lg btn-circle btn-light" href="/exhibit/detail.do?exhibitNo=4">전시 정보</a>
+                                        <a class="btn btn-lg btn-circle btn-outline-new-white" href="/booking/apply.do">예약하기</a>
                                     </p>
                                 </div>
                             </div>
@@ -52,8 +47,8 @@
                                     <h1 class="m-b-20"><strong>근대 문예인, <br>위창 오세창 葦滄 吳世昌</strong></h1>
                                     <p class="m-b-40">Oh Sechang, A Modern Caligrapher and Connoisseur</p>
                                     <p>
-                                        <a class="btn btn-lg btn-circle btn-new-white" href="#">전시 정보</a>
-                                        <a class="btn btn-lg btn-circle btn-outline-new-white" href="#">예약하기</a>
+                                        <a class="btn btn-lg btn-circle btn-new-white" href="/exhibit/detail.do?exhibitNo=5">전시 정보</a>
+                                        <a class="btn btn-lg btn-circle btn-outline-new-white" href="/booking/apply.do">예약하기</a>
                                     </p>
                                 </div>
                             </div>

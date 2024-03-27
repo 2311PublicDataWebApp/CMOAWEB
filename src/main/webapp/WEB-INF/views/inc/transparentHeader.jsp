@@ -7,13 +7,13 @@
         </div>
     </div>
 </div>
-<header class="header">
+<header class="header header-transparent">
     <div class="container-fluid">
         <div class="inner-header"><a class="inner-brand" href="/">CMoA</a></div>
         <div class="inner-navigation collapse">
             <div class="inner-nav">
                 <ul>
-	                <c:if test="${userId ne 'admin' }">
+					<c:if test="${userId ne 'admin' }">
 	                    <li class="menu-category-items"><a href="#"><span class="menu-category-span">전시예매</span></a>
 	                        <ul class="sub-menu">
 	                            <li><a href="/booking/apply.do">전시 예매</a></li>
@@ -58,7 +58,7 @@
                         <c:if test="${userId ne 'admin' }">
 		                    <li class="menu-category-items"><a href="#"><span class="menu-category-span">마이페이지</span></a>
 		                        <ul class="sub-menu">
-		                            <li><a href="/member/myPage.do">나의정보</a></li>
+		                           <li><a href="/member/myPage.do">나의정보</a></li>
 		                            <li><a href="/member/myBooking.do">예매내역</a></li>
 		                            <li><a href="/member/logout.do">로그아웃</a></li>
 		                        </ul>
