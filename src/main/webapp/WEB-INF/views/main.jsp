@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
         <title>한국중앙박물관</title>
         <%@ include file="./inc/head.jsp" %>
     </head>
@@ -70,6 +72,8 @@
                         <div class="col-md-12 m-auto">
                             <h1>한국중앙박물관에 오신 것을 환영합니다</h1><br>
                         </div>
+                     </div>
+                     <div class="row">
                         <div class="col-md-6 m-auto">
                             <p class="lead">
                             <strong> 관람시간 </strong><br> 월/화/목/금/일 10:00 ~ 18:00  수/토 10:00 ~ 20:00 
@@ -79,16 +83,17 @@
                         </div>
                         <div class="col-md-5 m-auto">
                             <p class="lead"><strong>공지사항</strong></p>
-                            <p><a href="#">박물관 엘리베이터 일시 운행 중단 알림</a></p>
-                            <hr>
-                            <p><a href="#">기증관 일부 전시실(205~208호) 휴실 기간 연장 안내(~'24.1.11)</a></p>
-                            <hr>
-                            <p><a href="#">분실물 정보 안내</a></p>
+	                        <c:forEach items="${nList }" begin="0" end="2" var="notice" varStatus="loop">
+							    <p><a href="/notice/detail?noticeNo=${notice.noticeNo}">${notice.noticeTitle}</a></p>
+							    <c:if test="${loop.index != 2}">
+							        <hr />
+							    </c:if>
+		                    </c:forEach>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="space" data-MY="60px"></div>
+                            <div class="space" data-MY="100px"></div>
                         </div>
                     </div>
                     <div class="row">
@@ -98,7 +103,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="space" data-mY="30px"></div>
+                            <div class="space" data-MY="30px"></div>
                         </div>
                     </div>
                 </div>

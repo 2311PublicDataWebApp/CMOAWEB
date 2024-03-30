@@ -3,6 +3,8 @@ package com.cmoa.boot.exhibit.domain;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,13 +28,17 @@ public class ExhibitVO {
 	@NonNull
 	private String deptCode;
 	@NonNull
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	private Date startDate;
 	@NonNull
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	private Date endDate;
-	@NonNull
-	private Integer exhFileNo;
-	private String exhFileName;
-	private String exhFileRename;
-	private String exhFilePath;
-	private String exhFileSize;
+	private String exhibitDesc;
+	private Integer exhibitPeople;
+	private String exhibitIntro;
+	private String fileName;
+	private String fileRename;
+	private String filePath;
+	private long fileSize;
+	
 }

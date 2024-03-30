@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ExhibitMapper">
+    <select id="selectExhibitList" resultType="ExhibitVO">
+        SELECT * FROM EXHIBIT_TBL ORDER BY EXHIBIT_NO DESC
+    </select>
+    <select id="selectExhibitName" resultType="ExhibitVO">
+        SELECT * FROM EXHIBIT_TBL WHERE EXHIBIT_PEOPLE != 0 ORDER BY START_DATE ASC
+    </select>
+    <select id="findOneByNo" resultType="ExhibitVO">
+        SELECT * FROM EXHIBIT_TBL WHERE EXHIBIT_NO = #{exhibitNo } 
+    </select>
+    <select id="findImgByNo" resultType="ExhibitImgVO">
+    	SELECT * FROM EXHIBIT_IMG_TBL WHERE EXHIBIT_NO = #{exhibitNo } 
+    </select>
+    <select id="selectTotalCount" resultType="_int">
+    	SELECT COUNT(*) FROM EXHIBIT_TBL
+    </select>
+    <insert id="insertExhibit">
+    	INSERT INTO EXHIBIT_TBL VALUES(SEQ_EXHIBIT_NO.NEXTVAL, #{exhibitTitle }, #{exhibitPlace }, #{deptCode }, #{startDate }, #{endDate }, #{exhibitDesc }, #{exhibitPeople }, #{exhibitIntro }, #{fileName }, #{fileRename }, #{filePath }, #{fileSize })
+    </insert>
+    <insert id="insertExhImages">
+	    INSERT INTO EXHIBIT_IMG_TBL VALUES(SEQ_FILE_NO.NEXTVAL, SEQ_EXHIBIT_NO.CURRVAL, #{exhFileName }, #{exhFileRename }, #{exhFilePath }, #{exhFileSize })
+	</insert>
+</mapper>
