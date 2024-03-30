@@ -36,7 +36,7 @@
                         <div class="col-lg-8 m-auto">
                         	<c:forEach items="${eList }" var="exhibit">
                             	<article class="post">
-                                 	<div class="post-preview"><a href="/exhibit/detail.do?exhibitNo=${exhibit.exhibitNo }"><img src="../resources/eTitleFiles/${exhibit.fileRename }" alt=""></a></div>
+                                 	<div class="post-preview"><a href="/exhibit/detail.do?exhibitNo=${exhibit.exhibitNo }"><img src="../resources/eTitleFiles/${exhibit.fileRename }" alt="" style="width: 100%; height: auto;"></a></div>
                                  	<div class="post-wrapper">
                                      	<div class="post-header">
                                          	<h2 class="post-title">

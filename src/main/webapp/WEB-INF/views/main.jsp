@@ -15,47 +15,23 @@
         <div class="wrapper">
             <section class="module-cover-slides fullscreen">
                 <ul class="slides-container">
-                    <li class="parallax text-center" data-overlay="0.1"><img src="../resources/img/mainexhibit1.png" alt="main1">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h1 class="m-b-20"><strong>인왕제색도 (仁王霽色圖)</strong></h1>
-                                    <p class="m-b-40">어느 수집가의 초대 - 고故 이건희 회장 기증 1주년 기념전</p>
-                                    <p>
-                                        <a class="btn btn-lg btn-circle btn-new-white" href="/exhibit/detail.do?exhibitNo=1">전시 정보</a>
-                                        <a class="btn btn-lg btn-circle btn-outline-new-white" href="/booking/apply.do">예약하기</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="parallax" data-overlay="0.6"><img src="../resources/img/mainexhibit2.jpg" alt="main2">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h1 class="m-b-20"><strong>사유의 방<br>(A Room of Quiet Contemplation)</strong></h1>
-                                    <p class="m-b-40">새로운 전시 공간에서 국보 반가사유상과 함께하는 사유의 여정이 시작됩니다</p>
-                                    <p>
-                                        <a class="btn btn-lg btn-circle btn-light" href="/exhibit/detail.do?exhibitNo=4">전시 정보</a>
-                                        <a class="btn btn-lg btn-circle btn-outline-new-white" href="/booking/apply.do">예약하기</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="parallax text-center" data-overlay="0.5"><img src="../resources/img/mainexhibit3.jpeg" alt="main3">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <h1 class="m-b-20"><strong>근대 문예인, <br>위창 오세창 葦滄 吳世昌</strong></h1>
-                                    <p class="m-b-40">Oh Sechang, A Modern Caligrapher and Connoisseur</p>
-                                    <p>
-                                        <a class="btn btn-lg btn-circle btn-new-white" href="/exhibit/detail.do?exhibitNo=5">전시 정보</a>
-                                        <a class="btn btn-lg btn-circle btn-outline-new-white" href="/booking/apply.do">예약하기</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                	<c:forEach items="${eList }" begin="0" end="2" var="exhibit">
+                		<li class="parallax text-center" data-overlay="0.7"><img src="../resources/eTitleFiles/${exhibit.fileRename }" alt="">
+	                        <div class="container">
+	                            <div class="row">
+	                                <div class="col-md-12">
+	                                    <h1 class="m-b-40"><strong>${exhibit.exhibitTitle }</strong></h1>
+	                                    <p>
+	                                        <a class="btn btn-lg btn-circle btn-new-white" href="/exhibit/detail.do?exhibitNo=${exhibit.exhibitNo }">전시 정보</a>
+	                                        <c:if test="${exhibit.exhibitPeople ne 0 }">
+		                                        <a class="btn btn-lg btn-circle btn-outline-new-white" href="/booking/apply.do">예약하기</a>
+	                                        </c:if>
+                                        </p>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </li>
+                    </c:forEach>
                 </ul>
                 <div class="slides-navigation">
                     <a class="prev" href="#">

@@ -20,6 +20,13 @@ public interface ExhibitStore {
 	 * @return eList
 	 */
 	List<ExhibitVO> selectExhibitList(SqlSession session, ExhibitPageInfo pi);
+	
+	/**
+	 * 전시 리스트 Service
+	 * @param session
+	 * @return eList
+	 */
+	List<ExhibitVO> selectExhibitList(SqlSession session);
 
 	/**
 	 * 전시명 불러오기 Service
@@ -27,21 +34,7 @@ public interface ExhibitStore {
 	 * @return eList
 	 */
 	List<ExhibitVO> selectExhibitName(SqlSession session);
-
-	/**
-	 * 전시 총 갯수 Service
-	 * @param session
-	 * @return totalCount
-	 */
-	int getTotalCount(SqlSession session);
-
-	/**
-	 * 전시명 불러오기 Service
-	 * @param exhibitNo
-	 * @return eOne
-	 */
-	ExhibitVO findOneByNo(SqlSession session, @NonNull Integer exhibitNo);
-
+	
 	/**
 	 * 전시 사진 불러오기 Service
 	 * @param session
@@ -49,6 +42,13 @@ public interface ExhibitStore {
 	 * @return iList
 	 */
 	List<ExhibitImgVO> findImgByNo(SqlSession session, Integer exhibitNo);
+
+	/**
+	 * 전시명 불러오기 Service
+	 * @param exhibitNo
+	 * @return eOne
+	 */
+	ExhibitVO findOneByNo(SqlSession session, @NonNull Integer exhibitNo);
 	
 	/**
 	 * 전시 등록 Service
@@ -65,6 +65,12 @@ public interface ExhibitStore {
 	 * @return 
 	 */
 	int insertExhImages(SqlSession session, ExhibitImgVO exhImage);
-
+	
+	/**
+	 * 전시 총 갯수 Service
+	 * @param session
+	 * @return totalCount
+	 */
+	int getTotalCount(SqlSession session);
 
 }

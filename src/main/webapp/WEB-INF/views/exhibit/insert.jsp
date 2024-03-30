@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>한국중앙박물관</title>
         <%@ include file="../inc/head.jsp" %>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body>
         <jsp:include page="../inc/header.jsp"></jsp:include>
@@ -111,7 +112,7 @@
                                 <br>
                                 <div class="row form-row">
                                 	<div class="col-md-3">
-                                		<button class="btn btn-block btn-round btn-light" type="button" onclick="addImg()">첨부파일 추가</button>
+                                		<button class="btn btn-block btn-round btn-light" type="button" onclick="addImg();">첨부파일 추가</button>
                                 	</div>
                                 </div>
                                 <br>
@@ -143,6 +144,5 @@
 			    uploadFileInput.appendChild(addInput);
 			}
         </script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </body>
 </html>

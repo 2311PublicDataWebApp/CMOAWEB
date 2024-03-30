@@ -30,6 +30,15 @@ public class ExhibitServiceLogic implements ExhibitService{
 		List<ExhibitVO> eList = eStore.selectExhibitList(session, pi);
 		return eList;
 	}
+	
+	/**
+	 * 전시 리스트 Service
+	 */
+	@Override
+	public List<ExhibitVO> selectExhibitList() {
+		List<ExhibitVO> eList = eStore.selectExhibitList(session);
+		return eList;
+	}
 
 	/**
 	 * 전시명 불러오기 Service
@@ -39,14 +48,14 @@ public class ExhibitServiceLogic implements ExhibitService{
 		List<ExhibitVO> eList = eStore.selectExhibitName(session);
 		return eList;
 	}
-
+	
 	/**
-	 * 전시 총 갯수 Service
+	 * 전시 사진 불러오기 Service
 	 */
 	@Override
-	public int getTotalCount() {
-		int totalCount = eStore.getTotalCount(session);
-		return totalCount;
+	public List<ExhibitImgVO> findImgByNo(Integer exhibitNo) {
+		List<ExhibitImgVO> iList = eStore.findImgByNo(session, exhibitNo);
+		return iList;
 	}
 
 	/**
@@ -56,15 +65,6 @@ public class ExhibitServiceLogic implements ExhibitService{
 	public ExhibitVO findOneByNo(@NonNull Integer exhibitNo) {
 		ExhibitVO eOne = eStore.findOneByNo(session, exhibitNo);
 		return eOne;
-	}
-	
-	/**
-	 * 전시 사진 불러오기 Service
-	 */
-	@Override
-	public List<ExhibitImgVO> findImgByNo(Integer exhibitNo) {
-		List<ExhibitImgVO> iList = eStore.findImgByNo(session, exhibitNo);
-		return iList;
 	}
 
 	/**
@@ -83,7 +83,15 @@ public class ExhibitServiceLogic implements ExhibitService{
 	public int insertExhImages(ExhibitImgVO exhImage) {
 		int result = eStore.insertExhImages(session, exhImage);
 		return result;
-		
+	}
+	
+	/**
+	 * 전시 총 갯수 Service
+	 */
+	@Override
+	public int getTotalCount() {
+		int totalCount = eStore.getTotalCount(session);
+		return totalCount;
 	}
 
 }

@@ -186,17 +186,4 @@ public class ExhibitController {
 		return exhMap;
 	}
 
-	/**
-	 * 첨부파일 삭제
-	 */
-	private void deleteFile(HttpServletRequest request, String fileName) {
-		String rPath = request.getSession().getServletContext().getRealPath("resources");
-		String delFilepath = rPath + "/euploadFiles/" + fileName;
-		File delFile = new File(delFilepath);
-		if (delFile.exists()) {
-			delFile.delete();
-		}
-
-	}
-
 }

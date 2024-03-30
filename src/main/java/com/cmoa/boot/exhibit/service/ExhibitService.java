@@ -19,23 +19,16 @@ public interface ExhibitService {
 	List<ExhibitVO> selectExhibitList(ExhibitPageInfo pi);
 
 	/**
+	 * 전시 리스트 Service
+	 * @return eList
+	 */
+	List<ExhibitVO> selectExhibitList();
+	
+	/**
 	 * 전시명 목록 불러오기 Service
 	 * @return eList
 	 */
 	List<ExhibitVO> selectExhibitName();
-
-	/**
-	 * 전시 총 갯수 Service
-	 * @return totalCount
-	 */
-	int getTotalCount();
-
-	/**
-	 * 전시 정보 불러오기 Service
-	 * @param exhibitNo
-	 * @return eOne
-	 */
-	ExhibitVO findOneByNo(@NonNull Integer exhibitNo);
 	
 	/**
 	 * 전시 사진 불러오기 Service
@@ -43,6 +36,13 @@ public interface ExhibitService {
 	 * @return iList
 	 */
 	List<ExhibitImgVO> findImgByNo(Integer exhibitNo);
+
+	/**
+	 * 전시 정보 불러오기 Service
+	 * @param exhibitNo
+	 * @return eOne
+	 */
+	ExhibitVO findOneByNo(@NonNull Integer exhibitNo);
 
 	/**
 	 * 전시 등록 Service
@@ -57,5 +57,11 @@ public interface ExhibitService {
 	 * @return result
 	 */
 	int insertExhImages(ExhibitImgVO exhImage);
+	
+	/**
+	 * 전시 총 갯수 Service
+	 * @return totalCount
+	 */
+	int getTotalCount();
 
 }

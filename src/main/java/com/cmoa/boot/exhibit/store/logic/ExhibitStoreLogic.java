@@ -27,6 +27,15 @@ public class ExhibitStoreLogic implements ExhibitStore{
 		List<ExhibitVO> eList = session.selectList("ExhibitMapper.selectExhibitList", null, rowBounds);
 		return eList;
 	}
+	
+	/**
+	 * 전시 리스트 Service
+	 */
+	@Override
+	public List<ExhibitVO> selectExhibitList(SqlSession session) {
+		List<ExhibitVO> eList = session.selectList("ExhibitMapper.selectExhibitList");
+		return eList;
+	}
 
 	/**
 	 * 전시명 불러오기 Service
@@ -36,14 +45,14 @@ public class ExhibitStoreLogic implements ExhibitStore{
 		List<ExhibitVO> eList = session.selectList("ExhibitMapper.selectExhibitName");
 		return eList;
 	}
-
+	
 	/**
-	 * 전시 총 갯수 Service
+	 * 전시 사진 불러오기 Service
 	 */
 	@Override
-	public int getTotalCount(SqlSession session) {
-		int totalCount = session.selectOne("ExhibitMapper.selectTotalCount");
-		return totalCount;
+	public List<ExhibitImgVO> findImgByNo(SqlSession session, Integer exhibitNo) {
+		List<ExhibitImgVO> iList = session.selectList("ExhibitMapper.findImgByNo", exhibitNo);
+		return iList;
 	}
 
 	/**
@@ -53,15 +62,6 @@ public class ExhibitStoreLogic implements ExhibitStore{
 	public ExhibitVO findOneByNo(SqlSession session, @NonNull Integer exhibitNo) {
 		ExhibitVO eOne = session.selectOne("ExhibitMapper.findOneByNo", exhibitNo);
 		return eOne;
-	}
-	
-	/**
-	 * 전시 사진 불러오기 Service
-	 */
-	@Override
-	public List<ExhibitImgVO> findImgByNo(SqlSession session, Integer exhibitNo) {
-		List<ExhibitImgVO> iList = session.selectList("ExhibitMapper.findImgByNo", exhibitNo);
-		return iList;
 	}
 
 	/**
@@ -81,6 +81,15 @@ public class ExhibitStoreLogic implements ExhibitStore{
 		int result = session.insert("ExhibitMapper.insertExhImages", exhImage);
 		return result;
 		
+	}
+	
+	/**
+	 * 전시 총 갯수 Service
+	 */
+	@Override
+	public int getTotalCount(SqlSession session) {
+		int totalCount = session.selectOne("ExhibitMapper.selectTotalCount");
+		return totalCount;
 	}
 
 }
