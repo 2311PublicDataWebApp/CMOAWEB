@@ -3,6 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MemberMapper">
+	<select id="selectTotalCount" resultType="_int">
+    	SELECT COUNT(*) FROM BOOKING_TBL LEFT OUTER JOIN MEMBER_TBL ON MEMBER_TBL.USER_ID = BOOKING_TBL.USER_ID LEFT OUTER JOIN EXHIBIT_TBL ON EXHIBIT_TBL.EXHIBIT_NO = BOOKING_TBL.EXHIBIT_NO WHERE BOOKING_TBL.USER_ID = #{userId }
+    </select>
+    <select id="selectBookingList" resultType="MyBookingVO">
+        SELECT * FROM BOOKING_TBL LEFT OUTER JOIN MEMBER_TBL ON MEMBER_TBL.USER_ID = BOOKING_TBL.USER_ID LEFT OUTER JOIN EXHIBIT_TBL ON EXHIBIT_TBL.EXHIBIT_NO = BOOKING_TBL.EXHIBIT_NO WHERE BOOKING_TBL.USER_ID = #{userId }
+    </select>
     <select id="checkMemberLogin" resultType="MemberVO">
         SELECT * FROM MEMBER_TBL WHERE USER_ID = #{userId } AND USER_PW = #{userPw }
     </select>

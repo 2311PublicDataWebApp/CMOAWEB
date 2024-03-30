@@ -1,5 +1,7 @@
 package com.cmoa.boot.member.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cmoa.boot.member.domain.MemberPageInfo;
 import com.cmoa.boot.member.domain.MemberVO;
+import com.cmoa.boot.member.domain.MyBookingVO;
 import com.cmoa.boot.member.service.MemberService;
 
 @Controller
@@ -109,7 +113,7 @@ public class MemberController {
 		return "redirect:/member/login.do";
 	}
 	
-	@GetMapping("/member/mypage.do")
+	@GetMapping("/member/myPage.do")
 	public String showMyPage(HttpSession session, Model model) {
 		try {
 			String userId = (String) session.getAttribute("userId");
@@ -126,6 +130,23 @@ public class MemberController {
 				model.addAttribute("msg", "회원 정보 조회를 완료하지 못했습니다.");
 				return "common/errorPage";
 			}
+		} catch (Exception e) {
+			model.addAttribute("msg", e.getMessage());
+			return "common/errorPage";
+		}
+	}
+	
+	@GetMapping("/member/myBooking.do")
+	public String showMyBookingPage(HttpSession session, Model model, @RequestParam(value="page", defaultValue = "1", required = false) Integer currentPage ) {
+		try {
+			String userId = (String) session.getAttribute("userId");
+			int boardLimit = 3;
+			int totalCount = mService.getTotalCount(userId);
+			MemberPageInfo pi = new MemberPageInfo(currentPage, totalCount, boardLimit);
+			List<MyBookingVO> bList = mService.selectBookingList(pi, userId);
+			model.addAttribute("bList", bList);
+			model.addAttribute("pi", pi);
+			return "member/myBooking";
 		} catch (Exception e) {
 			model.addAttribute("msg", e.getMessage());
 			return "common/errorPage";

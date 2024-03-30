@@ -1,6 +1,10 @@
 package com.cmoa.boot.member.service;
 
+import java.util.List;
+
+import com.cmoa.boot.member.domain.MemberPageInfo;
 import com.cmoa.boot.member.domain.MemberVO;
+import com.cmoa.boot.member.domain.MyBookingVO;
 
 public interface MemberService {
 	
@@ -59,5 +63,20 @@ public interface MemberService {
 	 * @return result
 	 */
 	int deleteMember(String userId);
+
+	/**
+	 * 멤버 예매내역 Service
+	 * @param pi 
+	 * @param userId
+	 * @return bList
+	 */
+	List<MyBookingVO> selectBookingList(MemberPageInfo pi, String userId);
+
+	/**
+	 * 예매 내역 총 갯수
+	 * @param userId 
+	 * @return totalCount
+	 */
+	int getTotalCount(String userId);
 
 }

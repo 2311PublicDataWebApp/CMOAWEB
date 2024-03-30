@@ -1,9 +1,14 @@
 package com.cmoa.boot.member.store.logic;
 
+import java.util.List;
+
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.cmoa.boot.member.domain.MemberPageInfo;
 import com.cmoa.boot.member.domain.MemberVO;
+import com.cmoa.boot.member.domain.MyBookingVO;
 import com.cmoa.boot.member.store.MemberStore;
 
 @Repository
@@ -79,6 +84,27 @@ public class MemberStoreLogic implements MemberStore{
 	public int deleteMember(SqlSession session, String userId) {
 		int result = session.delete("MemberMapper.deleteMember", userId);
 		return result;
+	}
+
+	/**
+	 * 멤버 예매내역 Service
+	 */
+	@Override
+	public List<MyBookingVO> selectBookingList(SqlSession session, MemberPageInfo pi, String userId) {
+		int limit = pi.getBoardLimit();
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		List<MyBookingVO> bList = session.selectList("MemberMapper.selectBookingList", userId, rowBounds);
+		return bList;
+	}
+
+	/**
+	 * 예매 내역 총 갯수
+	 */
+	@Override
+	public int getTotalCount(SqlSession session, String userId) {
+		int totalCount = session.selectOne("MemberMapper.selectTotalCount", userId);
+		return totalCount;
 	}
 
 }

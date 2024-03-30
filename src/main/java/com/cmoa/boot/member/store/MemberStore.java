@@ -1,7 +1,12 @@
 package com.cmoa.boot.member.store;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
+
+import com.cmoa.boot.member.domain.MemberPageInfo;
 import com.cmoa.boot.member.domain.MemberVO;
+import com.cmoa.boot.member.domain.MyBookingVO;
 
 public interface MemberStore {
 	
@@ -68,5 +73,22 @@ public interface MemberStore {
 	 * @return result
 	 */
 	int deleteMember(SqlSession session, String userId);
+
+	/**
+	 * 멤버 예매내역 Service
+	 * @param session
+	 * @param pi 
+	 * @param userId
+	 * @return bList
+	 */
+	List<MyBookingVO> selectBookingList(SqlSession session, MemberPageInfo pi, String userId);
+
+	/**
+	 * 예매 내역 총 갯수
+	 * @param session
+	 * @param userId 
+	 * @return totalCount
+	 */
+	int getTotalCount(SqlSession session, String userId);
 
 }

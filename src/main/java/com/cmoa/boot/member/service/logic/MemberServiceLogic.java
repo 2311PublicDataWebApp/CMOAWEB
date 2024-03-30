@@ -1,10 +1,14 @@
 package com.cmoa.boot.member.service.logic;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cmoa.boot.member.domain.MemberPageInfo;
 import com.cmoa.boot.member.domain.MemberVO;
+import com.cmoa.boot.member.domain.MyBookingVO;
 import com.cmoa.boot.member.service.MemberService;
 import com.cmoa.boot.member.store.MemberStore;
 
@@ -86,6 +90,24 @@ public class MemberServiceLogic implements MemberService{
 	public int deleteMember(String userId) {
 		int result = mStore.deleteMember(session, userId);
 		return result;
+	}
+
+	/**
+	 * 멤버 예매내역 Service
+	 */
+	@Override
+	public List<MyBookingVO> selectBookingList(MemberPageInfo pi, String userId) {
+		List<MyBookingVO> bList = mStore.selectBookingList(session, pi, userId);
+		return bList;
+	}
+
+	/**
+	 * 예매 내역 총 갯수
+	 */
+	@Override
+	public int getTotalCount(String userId) {
+		int totalCount = mStore.getTotalCount(session, userId);
+		return totalCount;
 	}
 
 }
