@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="row form-row">
                                     <div class="col-md-12 form-group">
-                                        <input class="form-control" type="date" name="bookingDate" id="exhibitDate" onchange="handlerPeople();" required>
+                                        <input class="form-control" type="date" name="bookingDate" id="bookingDate" onchange="handlerPeople();" required>
                                     </div>
                                 </div>
                                 <div class="row form-row">
@@ -75,12 +75,7 @@
                                 <div class="row form-row">
                                     <div class="col-md-12 form-group">
                                         <select class="form-control" id="peopleNo" name="peopleNo" disabled>
-                                        	<option selected="selected" disabled>날짜를 먼저 선택해주세요</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
+<!--                                         	<option selected="selected" disabled>날짜를 먼저 선택해주세요</option> -->
                                         </select>
                                     </div>
                                 </div>
@@ -116,29 +111,61 @@
 				function handlerDate() {
 					var exhibitNo = $("#exhibitNo").val();
 					$.ajax({
-						url : "/booking/apply/ajax.do",
+						url : "/booking/date/ajax.do",
 						data : { "exhibitNo" : exhibitNo },
 						type : "GET",
 						success : function(data){
-							let exhibitDate = document.getElementById('exhibitDate');
+							let bookingDate = document.getElementById('bookingDate');
 							let peopleNo = document.getElementById('peopleNo');
 							console.log(data);
 							document.getElementById('exhibitNo').options[0].disabled=true;
-							exhibitDate.setAttribute('min', data.startDate);
-							exhibitDate.setAttribute('max', data.endDate);
+							bookingDate.setAttribute('min', data.startDate);
+							bookingDate.setAttribute('max', data.endDate);
 						}, 
 						error : function() {
 							alert("통신 실패!");
 						}
 					});
 				}
+				
 				function handlerPeople() {
                     let peopleNo = document.getElementById('peopleNo');
-                    var exhibitDate = $("#exhibitDate").val();
-                    if (exhibitDate != null) {
+                    let exhibitDate = document.getElementById('bookingDate');
+                    var bookingDate = $("#bookingDate").val();
+                    var exhibitNo = $("#exhibitNo").val();
+/*                     if (exhibitDate != null) {
                         peopleNo.disabled=false;
                         peopleNo.options[0].innerHTML = "인원수를 선택해주세요";
-                    }
+                    } */
+                    $.ajax({
+						url : "/booking/pnum/ajax.do",
+						data : { "exhibitNo" : exhibitNo
+								, "bookingDate" : bookingDate },
+						type : "GET",
+						success : function(data){
+							console.log(data);
+							let left = data.exhibitPeople - data.totalCount;
+							peopleNo.disabled=false;
+							console.log(left);
+							if (left > 5) {
+								for(let i = 0; i < 5; i++) {
+									optText = i + 1;
+							        optValue = i + 1;
+									peopleNo.append(new Option(optText, optValue)); 
+								}
+							} else {
+								for(let i = 0; i < left; i++) {
+									optText = i + 1;
+							        optValue = i + 1;
+									peopleNo.append(new Option(optText, optValue)); 
+								}
+							}
+							console.log(peopleNo);
+						},
+						error : function() {
+							alert("통신 실패!");
+						}
+                    });
 				}
 			</script>
         </div>

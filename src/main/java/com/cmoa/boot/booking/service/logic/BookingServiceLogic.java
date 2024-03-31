@@ -44,4 +44,10 @@ public class BookingServiceLogic implements BookingService {
 		return bOne;
 	}
 
+	@Override
+	public int selectTotalCount(BookingVO booking) {
+		int totalCount = bStore.selectTotalCount(session, booking);
+		return totalCount;
+	}
+
 }

@@ -9,6 +9,9 @@
 	<select id="findOneByNo" resultType="BookResultVO">
     	SELECT * FROM BOOKING_TBL LEFT OUTER JOIN MEMBER_TBL ON MEMBER_TBL.USER_ID = BOOKING_TBL.USER_ID LEFT OUTER JOIN EXHIBIT_TBL ON EXHIBIT_TBL.EXHIBIT_NO = BOOKING_TBL.EXHIBIT_NO WHERE BOOKING_NO = #{bookingNo }
     </select>
+    <select id="selectTotalCount" resultType="_int">
+    	SELECT NVL(SUM(PEOPLE_NO), 0) FROM BOOKING_TBL WHERE EXHIBIT_NO = #{exhibitNo } AND BOOKING_DATE = #{bookingDate }
+    </select>
     <insert id="insertBooking">
     	INSERT INTO BOOKING_TBL VALUES(SEQ_BOOKING_NO.NEXTVAL, #{userId }, #{exhibitNo }, #{bookingDate }, #{bookingPhone }, #{bookingEmail }, #{peopleNo }, #{bookingName })
     </insert>

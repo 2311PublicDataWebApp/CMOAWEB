@@ -20,8 +20,6 @@ public class HomeController {
 	@Autowired
 	private ExhibitService eService;
 	
-	
-//	@CrossOrigin(origins = "http://localhost:9191")
 	@GetMapping("/")
 	public String home(Model model) {
 		List<NoticeVO> nList = nService.selectNoticeList();

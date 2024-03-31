@@ -1,9 +1,12 @@
 package com.cmoa.boot.booking.controller;
 
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +35,7 @@ public class BookingController {
 	private BookingService bService;
 	
 	@GetMapping("/booking/apply.do")
-	public String showApplyForm(HttpSession session, Model model, Integer exhibitNo) {
+	public String showApplyForm(HttpSession session, HttpServletRequest request, HttpServletResponse response, Model model, Integer exhibitNo) {
 		try {
 			List<ExhibitVO> eList = eService.selectExhibitName();
 			String userId = (String) session.getAttribute("userId");
@@ -40,7 +43,13 @@ public class BookingController {
 			if (userId != null) {
 				member = mService.findOneById(userId);
 			} else {
-				model.addAttribute("msg", "로그인이 필요합니다.");
+				response.setCharacterEncoding("utf-8");
+				response.setContentType("text/html; charset=utf-8");
+				PrintWriter writer = response.getWriter();
+				writer.println("<script type='text/javascript'>");
+				writer.println("alert('로그인이 필요합니다.');");
+				writer.println("</script>");
+				writer.flush();
 				return "member/login";
 			}
 			if (member != null) {
@@ -48,8 +57,8 @@ public class BookingController {
 				model.addAttribute("member", member);
 				return "booking/apply";
 			} else {
-				model.addAttribute("msg", "로그인이 필요합니다.");
-				return "member/login";
+				model.addAttribute("msg", "요청하신 서비스를 완료하지 못하였습니다.");
+				return "common/errorPage";
 			}
 		} catch (Exception e) {
 			model.addAttribute("msg", e.getMessage());
@@ -59,8 +68,8 @@ public class BookingController {
 	}
 	
 	@ResponseBody
-	@GetMapping("/booking/apply/ajax.do")
-	public Map<String, Object> showApplyAjax(Integer exhibitNo) {
+	@GetMapping("/booking/date/ajax.do")
+	public Map<String, Object> showDateAjax(Integer exhibitNo) {
 		ExhibitVO eOne = eService.findOneByNo(exhibitNo);
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("startDate", eOne.getStartDate());
@@ -70,9 +79,23 @@ public class BookingController {
 //		json.put("endDate", eOne.getEndDate());
 //		return json.toString();
 	}
-
+	
+	@ResponseBody
+	@GetMapping("/booking/pnum/ajax.do")
+	public Map<String, Object> showPeopleNoAjax(BookingVO booking, Integer exhibitNo) {
+		int totalCount = bService.selectTotalCount(booking);
+		ExhibitVO eOne = eService.findOneByNo(exhibitNo);
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("totalCount", totalCount);
+		result.put("exhibitPeople", eOne.getExhibitPeople());
+		return result;
+//		json.put("startDate", eOne.getStartDate());
+//		json.put("endDate", eOne.getEndDate());
+//		return json.toString();
+	}
+	
 	@PostMapping("/booking/apply.do")
-	public String insertBooking(BookingVO booking, HttpSession session, Model model) {
+	public String insertBooking(BookingVO booking, HttpSession session, HttpServletRequest request, HttpServletResponse response, Model model) {
 		try {
 			int result = bService.insertBooking(booking);
 			if (result > 0) {
@@ -81,8 +104,14 @@ public class BookingController {
 				model.addAttribute("booking", bOne);
 				return "booking/applyInvoice";
 			} else {
-				model.addAttribute("msg", "예매가 정상적으로 진행되지 않았습니다.");
-				return "common/errorPage";
+				response.setCharacterEncoding("utf-8");
+				response.setContentType("text/html; charset=utf-8");
+				PrintWriter writer = response.getWriter();
+				writer.println("<script type='text/javascript'>");
+				writer.println("alert('예매가 정상적으로 진행되지 않았습니다.');");
+				writer.println("</script>");
+				writer.flush();
+				return "redirect:/";
 			}
 		} catch (Exception e) {
 			model.addAttribute("msg", e.getMessage());

@@ -51,9 +51,7 @@
                                 <hr class="mt-3 mb-5">
                                 <div class="form-group">
                                 <c:if test="${exhibit.exhibitPeople ne 0 }">
-                                    <button class="btn btn-block btn-round btn-brand" type="button">
-                                      	<a href="/booking/apply.do" style="color: #fff;">예약하기</a>
-                                    </button>
+                                    <button class="btn btn-block btn-round btn-brand" type="button" onclick="location.href='http://127.0.0.1:9191/booking/apply.do'" style="color: #fff;">예약하기</button>
                                 </c:if>
                                	<c:if test="${exhibit.exhibitPeople eq 0 }">
                                		<button class="btn btn-block btn-round btn-gray" type="button" disabled="disabled">

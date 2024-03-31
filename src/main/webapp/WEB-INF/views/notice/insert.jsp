@@ -8,6 +8,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>한국중앙박물관</title>
         <%@ include file="../inc/head.jsp" %>
+        <style type="text/css">
+	        .ck-editor__editable[role="textbox"] {
+				/* Editing area */
+				min-height: 200px;
+			}
+			            
+			.ck-content .image {
+				/* Block images */
+			    max-width: 80%;
+				margin: 20px auto;
+			}
+        </style>
     </head>
     <body>
         <jsp:include page="../inc/header.jsp"></jsp:include>
@@ -32,7 +44,7 @@
             </section>
             <section class="module">
                 <div class="container">
-                    <div class="row">
+                    <div class="row h-90">
                         <div class="col-md-12 m-auto">
                             <form action="/notice/insert.do" method="post">
                                 <div class="row form-row">
@@ -52,7 +64,7 @@
                                 </div>
                                 <div class="row form-row">
                                     <div class="col-md-12 form-group">
-                                        <textarea rows="8" class="form-control" name="noticeContent" required></textarea>
+                                        <textarea id="editor" name="noticeContent"></textarea>
                                     </div>
                                 </div>
                                 <br><br>
@@ -67,7 +79,70 @@
                 </div>
             </section>
 			<jsp:include page="../inc/footer.jsp"></jsp:include>
-        </div>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	       </div>
+	       <script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/super-build/ckeditor.js"></script>
+	       <script type="text/javascript">
+	       		CKEDITOR.ClassicEditor.create(document.getElementById("editor"), {
+		            toolbar: {
+		                items: [
+		                    'bold', 'italic', 'strikethrough', 'underline', '|',
+		                    'outdent', 'indent', 'insertTable', '|',
+		                    'undo', 'redo',
+		                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'highlight'
+		                ],
+		                shouldNotGroupWhenFull: true
+		            },
+		            list: {
+		                properties: {
+		                    styles: true,
+		                    startIndex: true,
+		                    reversed: true
+		                }
+		            },
+		            placeholder: '기본 폰트 크기는 13입니다.',
+		            fontFamily: {
+		                options: [
+		                    'default',
+		                    'Arial, Helvetica, sans-serif',
+		                    'Courier New, Courier, monospace',
+		                    'Georgia, serif',
+		                    'Lucida Sans Unicode, Lucida Grande, sans-serif',
+		                    'Tahoma, Geneva, sans-serif',
+		                    'Times New Roman, Times, serif',
+		                    'Trebuchet MS, Helvetica, sans-serif',
+		                    'Verdana, Geneva, sans-serif'
+		                ],
+		                supportAllValues: true
+		            },
+		            fontSize: {
+		                options: [ 10, 12, 'default', 14,  16 ],
+		                supportAllValues: true
+		            },
+		            removePlugins: [
+		                'AIAssistant',
+		                'CKBox',
+		                'CKFinder',
+		                'EasyImage',
+		                'RealTimeCollaborativeComments',
+		                'RealTimeCollaborativeTrackChanges',
+		                'RealTimeCollaborativeRevisionHistory',
+		                'PresenceList',
+		                'Comments',
+		                'TrackChanges',
+		                'TrackChangesData',
+		                'RevisionHistory',
+		                'Pagination',
+		                'WProofreader',
+		                'MathType',
+		                'SlashCommand',
+		                'Template',
+		                'DocumentOutline',
+		                'FormatPainter',
+		                'TableOfContents',
+		                'PasteFromOfficeEnhanced',
+		                'CaseChange'
+		            ]
+	            });
+	   </script>
     </body>
 </html>

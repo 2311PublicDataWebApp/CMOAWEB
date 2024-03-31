@@ -6,4 +6,13 @@
     <select id="selectNoticeList" resultType="NoticeVO">
         SELECT * FROM NOTICE_TBL ORDER BY NOTICE_NO DESC
     </select>
+    <select id="selectOneByNo" resultType="NoticeVO">
+    	SELECT * FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo }
+    </select>
+    <select id="selectTotalCount" resultType="_int">
+    	SELECT COUNT(*) FROM NOTICE_TBL
+    </select>
+    <insert id="insertNotice">
+    	INSERT INTO NOTICE_TBL VALUES(SEQ_NOTICE_NO.NEXTVAL, #{noticeTitle }, #{noticeWriter }, #{noticeContent }, DEFAULT, DEFAULT)
+    </insert>
 </mapper>

@@ -49,7 +49,7 @@
                        						<strong>${notice.noticeDate }</strong>
                        					</p>
                        					<p>
-                       						<a href="/notice/detail?noticeNo=${notice.noticeNo }">${notice.noticeTitle }</a>
+                       						<a href="/notice/detail.do?noticeNo=${notice.noticeNo}">${notice.noticeTitle }</a>
 										</p>
                                 		<hr>
 									</c:forEach>

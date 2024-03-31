@@ -2,6 +2,7 @@ package com.cmoa.boot.exhibit.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,6 +12,7 @@ import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,18 +21,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cmoa.boot.exhibit.domain.ExhibitVO;
 import com.cmoa.boot.exhibit.domain.ExhibitImgVO;
 import com.cmoa.boot.exhibit.domain.ExhibitPageInfo;
 import com.cmoa.boot.exhibit.service.ExhibitService;
+import com.cmoa.boot.member.domain.MemberVO;
+import com.cmoa.boot.member.service.MemberService;
 
 @Controller
 public class ExhibitController {
 
 	@Autowired
 	private ExhibitService eService;
+	@Autowired
+	private MemberService mService;
 	
 	/**
 	 * 전시 리스트 GetMapping
@@ -65,14 +72,26 @@ public class ExhibitController {
 	
 	/**
 	 * 전시 등록 GetMapping
+	 * @throws IOException 
 	 */
 	@GetMapping("/exhibit/insert.do")
-	public String showInsertForm(HttpSession session, Model model) {
-		String userId = (String) session.getAttribute("userId");
-		if ("admin".equals(userId)) {
-			return "exhibit/insert";
-		} else {
-			model.addAttribute("msg", "관리자만 이용 가능한 페이지입니다.");
+	public String showInsertForm(HttpSession session, HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+		try {
+			String userId = (String) session.getAttribute("userId");
+			if ("admin".equals(userId)) {
+				return "exhibit/insert";
+			} else {
+				response.setCharacterEncoding("utf-8");
+				response.setContentType("text/html; charset=utf-8");
+				PrintWriter writer = response.getWriter();
+				writer.println("<script type='text/javascript'>");
+				writer.println("alert('관리자만 이용 가능한 페이지입니다.');");
+				writer.println("</script>");
+				writer.flush();
+				return "member/login";
+			}
+		} catch (Exception e) {
+			model.addAttribute("msg", e.getMessage());
 			return "common/errorPage";
 		}
 	}
@@ -83,7 +102,7 @@ public class ExhibitController {
 	@PostMapping("/exhibit/insert.do")
 	public String insertExhibit(@RequestParam(value = "titleFile", required = false) MultipartFile titleFile
 			, @RequestParam(value = "uploadFile", required = false) List<MultipartFile> uploadFileList
-			, HttpServletRequest request
+			, HttpServletRequest request, HttpServletResponse response
 			, ExhibitVO exhibit, Model model) throws IllegalAccessException, IOException {
 		try {
 			if (titleFile != null && !titleFile.isEmpty()) {
@@ -119,8 +138,14 @@ public class ExhibitController {
 			if (result > 0) {
 				return "redirect:/exhibit/list.do";
 			} else {
-				model.addAttribute("msg", "서비스가 완료되지 못했습니다.");
-				return "common/errorPage";
+				response.setCharacterEncoding("utf-8");
+				response.setContentType("text/html; charset=utf-8");
+				PrintWriter writer = response.getWriter();
+				writer.println("<script type='text/javascript'>");
+				writer.println("alert('서비스가 완료되지 못했습니다.');");
+				writer.println("</script>");
+				writer.flush();
+				return "redirect:/";
 			}
 		} catch (Exception e) {
 			model.addAttribute("msg", e.getMessage());

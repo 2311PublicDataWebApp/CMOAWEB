@@ -37,4 +37,10 @@ public class BookingStoreLogic implements BookingStore{
 		return bOne;
 	}
 
+	@Override
+	public int selectTotalCount(SqlSession session, BookingVO booking) {
+		int totalCount =  session.selectOne("BookingMapper.selectTotalCount", booking);
+		return totalCount;
+	}
+
 }

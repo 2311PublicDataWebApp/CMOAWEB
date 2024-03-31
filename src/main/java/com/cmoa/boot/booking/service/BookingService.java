@@ -26,4 +26,6 @@ public interface BookingService {
 	 */
 	BookResultVO findOneByNo(int bookingNo);
 
+	int selectTotalCount(BookingVO booking);
+
 }

@@ -30,4 +30,6 @@ public interface BookingStore {
 	 */
 	BookResultVO findOneByNo(SqlSession session, int bookingNo);
 
+	int selectTotalCount(SqlSession session, BookingVO booking);
+
 }

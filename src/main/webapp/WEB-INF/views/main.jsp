@@ -60,7 +60,7 @@
                         <div class="col-md-5 m-auto">
                             <p class="lead"><strong>공지사항</strong></p>
 	                        <c:forEach items="${nList }" begin="0" end="2" var="notice" varStatus="loop">
-							    <p><a href="/notice/detail?noticeNo=${notice.noticeNo}">${notice.noticeTitle}</a></p>
+							    <p><a href="/notice/detail.do?noticeNo=${notice.noticeNo}">${notice.noticeTitle}</a></p>
 							    <c:if test="${loop.index != 2}">
 							        <hr />
 							    </c:if>
@@ -79,7 +79,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="space" data-MY="30px"></div>
+                            <div class="space" data-MY="60px"></div>
                         </div>
                     </div>
                 </div>
