@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>한국중앙박물관</title>
         <%@ include file="../inc/head.jsp" %>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     </head>
     <body>
         <jsp:include page="../inc/header.jsp"></jsp:include>
@@ -52,7 +53,7 @@
                                 </div>
                                 <div class="row form-row">
                                     <div class="col-md-12 form-group">
-                                        <select class="form-control" name="exhibitNo">
+                                        <select class="form-control" id="exhibitNo" name="exhibitNo" onchange="handlerDate();">
                                         	<option selected="selected">전시명</option>
                                         	<c:forEach items="${eList }" var="exhibit" varStatus="i">
                                         		<option value="${exhibit.exhibitNo }">${exhibit.exhibitTitle } :: ${exhibit.startDate } ~ ${exhibit.endDate }</option>
@@ -61,25 +62,26 @@
                                     </div>
                                 </div>
                                 <div class="row form-row">
-                                    <p class="col-md-12">관람 인원 수를 선택해주세요</p><br>
-                                </div>
-                                <div class="row form-row">
-                                    <div class="col-md-12 form-group">
-                                        <select class="form-control" name="peopleNo">
-                                            <option value=1 selected="selected">1</option>
-                                            <option value=2>2</option>
-                                            <option value=3>3</option>
-                                            <option value=4>4</option>
-                                            <option value=5>5</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row form-row">
                                     <p class="col-md-12">관람 날짜를 지정해주세요</p><br>
                                 </div>
                                 <div class="row form-row">
                                     <div class="col-md-12 form-group">
-                                        <input class="form-control" type="date" name="bookingDate" min="${exhibit.startDate }" max="${exhibit.endDate }" required>
+                                        <input class="form-control" type="date" name="bookingDate" id="exhibitDate" onchange="handlerPeople();" required>
+                                    </div>
+                                </div>
+                                <div class="row form-row">
+                                    <p class="col-md-12">관람 인원 수를 선택해주세요</p><br>
+                                </div>
+                                <div class="row form-row">
+                                    <div class="col-md-12 form-group">
+                                        <select class="form-control" id="peopleNo" name="peopleNo" disabled>
+                                        	<option selected="selected" disabled>날짜를 먼저 선택해주세요</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row form-row">
@@ -110,6 +112,35 @@
                 </div>
             </section>
 			<jsp:include page="../inc/footer.jsp"></jsp:include>
+			<script type="text/javascript">
+				function handlerDate() {
+					var exhibitNo = $("#exhibitNo").val();
+					$.ajax({
+						url : "/booking/apply/ajax.do",
+						data : { "exhibitNo" : exhibitNo },
+						type : "GET",
+						success : function(data){
+							let exhibitDate = document.getElementById('exhibitDate');
+							let peopleNo = document.getElementById('peopleNo');
+							console.log(data);
+							document.getElementById('exhibitNo').options[0].disabled=true;
+							exhibitDate.setAttribute('min', data.startDate);
+							exhibitDate.setAttribute('max', data.endDate);
+						}, 
+						error : function() {
+							alert("통신 실패!");
+						}
+					});
+				}
+				function handlerPeople() {
+                    let peopleNo = document.getElementById('peopleNo');
+                    var exhibitDate = $("#exhibitDate").val();
+                    if (exhibitDate != null) {
+                        peopleNo.disabled=false;
+                        peopleNo.options[0].innerHTML = "인원수를 선택해주세요";
+                    }
+				}
+			</script>
         </div>
     </body>
 </html>
