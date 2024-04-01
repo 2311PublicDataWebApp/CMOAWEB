@@ -42,7 +42,7 @@
                             	<hr>
 							</ul>
                         </div>
-                        <div class="col-md-9 m-auto">
+                        <div class="col-md-9 min-vh-90 m-auto">
                             <form>
                                 <div class="row form-row">
                                     <p class="col-md-12">아이디</p><br>

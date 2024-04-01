@@ -42,7 +42,7 @@
                             	<hr>
 							</ul>
                         </div>
-                        <div class="col-md-9 m-auto">
+                        <div class="col-md-9 min-vh-90 m-auto">
                             <div class="tab-content">
                                 <div class="tab-pane show active" id="tab-1-1">
                        				<c:forEach items="${bList }" var="booking" varStatus="i">
