@@ -50,26 +50,35 @@ CMoA 한국중앙박물관
 
 ## 🖥 실행화면
 <br/>
+
 ### ✔ 메인화면
 <br/>
 ![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/f94521f6-e270-45e4-9c75-a11654ead163)
 
 ![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/def5611c-9bbc-441d-ba43-f012244f22e3)
 <br/>
+
 ### ✔ 회원
+
 <br/>
 **1. 로그인** <br/><br/>
 ![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/b255dc05-cdcd-4103-b696-0b5f3e53fb8f)
+
 **2. 회원가입** <br/><br/>
 ![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/84e6d746-98a4-46fd-97f0-15925324b596)
+
 **3. 아이디 찾기** <br/><br/>
 ![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/b4db427b-4b54-4111-aed1-8cd2cb0e6b6e)
+
 **4. 비밀번호 찾기** <br/><br/>
 ![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/7b30a45a-648c-4ae7-a5da-4eafd7adc86c)
+
 **5. 내 정보** <br/><br/>
 ![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/00b226a7-df89-4556-a458-b7001f605354)
+
 **6. 정보 수정** <br/><br/>
 ![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/d6ee103a-b9fe-4228-b170-75f7ff0d2f3f)
+
 **7. 회원 목록** <br/><br/>
 
 
@@ -77,6 +86,7 @@ CMoA 한국중앙박물관
 <br/>
 **1. 공지 목록** <br/><br/>
 ![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/524e5c1c-eccc-42f4-8261-2f0d14fbfeed)
+
 **2. 공지 등록** <br/><br/>
 
 **3. 공지 상세** <br/><br/>
@@ -86,20 +96,25 @@ CMoA 한국중앙박물관
 <br/>
 **1. 전시 목록** <br/><br/>
 ![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/894f5c8f-8fdb-46bf-b217-afb467b7637c)
+
 **2. 전시 등록** <br/><br/>
 
 **3. 전시 상세** <br/><br/>
 ![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/80a53806-5049-4854-9aad-51136471ae28)
+
 <br/><br/><br/>
 
 ### ✔ 예매
 <br/>
 **1. 예매 신청** <br/><br/>
 ![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/e2b32353-4aa2-4335-ab04-f4c65fb5e913)
+
 **2. 예매 완료** <br/><br/>
 ![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/398d1af8-22aa-4617-90c1-89728d9222f6)
+
 **3. 예매 내역** <br/><br/>
 ![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/e378ebcd-80a3-4691-8fc8-218e99a1a91d)
+
 
 
 
