@@ -12,7 +12,7 @@ CMoA 한국중앙박물관
 <br/>
 
 ## 🔧 개발 환경
-<img src="https://img.shields.io/badge/Spring Boot-#6DB33F?style=flat-square&logo=springboot&logoColor=white"/> <img src="https://img.shields.io/badge/Oracle-F80000?style=flat-square&logo=oracle&logoColor=white"/> <img src="https://img.shields.io/badge/VISUAL STUDIO CODE-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white"/>
+<img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white"/> <img src="https://img.shields.io/badge/Oracle-F80000?style=flat-square&logo=oracle&logoColor=white"/> <img src="https://img.shields.io/badge/VISUAL STUDIO CODE-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white"/>
 <br/><img src="https://img.shields.io/badge/JAVA-F80000?style=flat-square&logo=&logoColor=white"/> <img src="https://img.shields.io/badge/MyBatis-111111?style=flat-square&logo=&logoColor=white"/> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=white"/> <img src="https://img.shields.io/badge/Apache Maven-C71A36?style=flat-square&logo=apachemaven&logoColor=white"/>
 <br/><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/> <img src="https://img.shields.io/badge/Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white"/>
 
@@ -92,6 +92,7 @@ CMoA 한국중앙박물관
 ![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/524e5c1c-eccc-42f4-8261-2f0d14fbfeed)
 
 **2. 공지 등록** <br/><br/>
+![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/7e382d41-fa21-4d84-8a9e-27ab4d600026)
 
 **3. 공지 상세** <br/><br/>
 ![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/2fe46a21-9c10-4cd2-bcd1-7ba560a40b89)
@@ -103,6 +104,7 @@ CMoA 한국중앙박물관
 ![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/894f5c8f-8fdb-46bf-b217-afb467b7637c)
 
 **2. 전시 등록** <br/><br/>
+![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/db208fd6-f2a5-4c6c-b276-29c7f5b63725)
 
 **3. 전시 상세** <br/><br/>
 ![image](https://github.com/2311PublicDataWebApp/CMOAWEB/assets/152952334/80a53806-5049-4854-9aad-51136471ae28)
